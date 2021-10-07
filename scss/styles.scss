@@ -138,6 +138,10 @@ nav {
   box-shadow: 0 0 0 0 white,
               0 0 5px 0 white inset;
 }
+.loader{
+  object-fit: cover;
+  width: 10em;
+}
 .fa-arrow-circle-up {
   position: fixed;
   right: 1em;

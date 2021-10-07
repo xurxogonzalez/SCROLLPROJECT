@@ -25,13 +25,16 @@ const getPresentacion = async () => {
         }
         
     } catch (error) {
-        console.error(error);
+        console.error("Catch Error Xurxo " +error);
+        return false;
     }
 
 }
 
-getPresentacion().then(txtPresentacion=>
-    document.querySelector(".banner__txt").innerHTML = txtPresentacion
+getPresentacion().then(txtPresentacion=>{
+    if(txtPresentacion)
+        document.querySelector(".banner__txt").innerHTML = txtPresentacion;
+    }
 );
 
 /**
