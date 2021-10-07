@@ -7,6 +7,7 @@
  */
 const linksContainer = document.querySelector(".links-container");
 const yearEl = document.querySelector("#year");
+const nav = document.querySelector(".nav");
 
 yearEl.textContent = new Date().getFullYear();
 
@@ -32,6 +33,28 @@ const getPresentacion = async () => {
 getPresentacion().then(txtPresentacion=>
     document.querySelector(".banner__txt").innerHTML = txtPresentacion
 );
+
+/**
+ * fixed navbar
+ */
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+        const scrollHeight = window.pageYOffset; 
+        const navHeight = nav.getBoundingClientRect().height;
+        if(navHeight>scrollHeight)
+            nav.classList.add("nav--fixed");
+        else
+            nav.classList.remove("na--fixed");
+
+        if(scrollHeight>500)
+            document.querySelector(".fa-arrow-circle-up").classList.add("show-link");
+        else
+        document.querySelector(".fa-arrow-circle-up").classList.remove("show-link")
+    }
+);
+
 document.querySelector(".nav__header--btn")
 .addEventListener(
     "click",

@@ -3,13 +3,16 @@ $width: 700px;
 * {
   box-sizing: border-box;
 }
+html{
+  scroll-behavior: smooth;
+}
 a {
   text-decoration: none;
 }
-.nav__header--btn{
+.nav__header--btn {
   cursor: pointer;
-  @media (min-width: $width){
-      display: none;
+  @media (min-width: $width) {
+    display: none;
   }
 }
 .title {
@@ -24,11 +27,19 @@ a {
 }
 nav {
   padding: 1em;
-  @media (min-width: $width){
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      
+  box-shadow: 0 1px 5px 0 black;
+  @media (min-width: $width) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &.nav--fixed {
+    @media (min-width: $width) {
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      background-color: rgb(255, 255, 255);
+    }
   }
   .nav__header {
     display: flex;
@@ -38,7 +49,7 @@ nav {
 }
 
 .links-container {
-  @media (min-width: $width){
+  @media (min-width: $width) {
     display: flex;
   }
   position: relative;
@@ -52,14 +63,14 @@ nav {
   transition-timing-function: ease-out;
   transition-property: max-height;
   transition-duration: 700ms;
-  @media (max-width: $width){
-  &.links-container--toggle {
-    max-height: 0;
-    overflow: hidden;
-    transition-timing-function: ease-in;
-    transition-property: max-height;
-    transition-duration: 500ms;
-  }
+  @media (max-width: $width) {
+    &.links-container--toggle {
+      max-height: 0;
+      overflow: hidden;
+      transition-timing-function: ease-in;
+      transition-property: max-height;
+      transition-duration: 500ms;
+    }
 
     //overflow-y: hidden;
   }
@@ -116,16 +127,41 @@ nav {
   }
 }
 
-.main-footer{
+.main-footer {
   background-color: black;
   color: white;
 }
-
-.fa-arrow-circle-up{
+.btn-white {
+  border: 1px solid white;
+  padding: 1em 2em;
+  color: white;
+  box-shadow: 0 0 0 0 white,
+              0 0 5px 0 white inset;
+}
+.fa-arrow-circle-up {
   position: fixed;
-  left: 0;
-  bottom: 0;
+  right: 1em;
+  bottom: 1em;
   font-size: 3em;
   color: blue;
   cursor: pointer;
+
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  visibility: hidden;
+  &.show-link{
+    visibility: visible;
+  }
+}
+
+
+@keyframes bounce{
+  from {
+    transform: scale(.9);
+  }
+  to {
+    transform: scale(1);
+  }
 }
